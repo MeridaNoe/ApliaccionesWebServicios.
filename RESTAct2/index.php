@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/JSON');
-$metodo = $_SERVER['REQUEST_METHOD'];
+$httpMethod = $_SERVER['REQUEST_METHOD'];
 switch ($metodo) {
     case 'GET': // CONSULTA
         try {
-            $client = new PDO("mysql:host=localhost;dbname=utez","root","root");
+            $client = new PDO("mysql:host=localhost;dbname=utez","root","");
             $result = $client->query("SELECT * FROM personal");
             $personal = array();
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -19,7 +19,7 @@ switch ($metodo) {
         if ($_GET ['accion'] == 'personal') {
             $jsonData = json_decode(file_get_contents("php://input"));
             try {
-                $conn = new PDO("mysql:host=localhost;dbnamne=utez;cahrset=utf8","root","root");
+                $conn = new PDO("mysql:host=localhost;dbnamne=utez;cahrset=utf8","root","");
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }   
@@ -43,7 +43,7 @@ switch ($metodo) {
         if ($_GET ['accion'] == 'personal') {
             $jsonData = json_decode(file_get_contents("php://input"));
             try {
-                $conn = new PDO("mysql:host=localhost;dbnamne=utez;cahrset=utf8","root","root");
+                $conn = new PDO("mysql:host=localhost;dbnamne=utez;cahrset=utf8","root","");
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }   
@@ -67,7 +67,7 @@ switch ($metodo) {
         case 'DELETE': // Eliminacion
             if ($_GET['accion'] == 'personal') {
                 try {
-                    $conn = new PDO("mysql:host=localhost;dbnamne=utez;cahrset=utf8","root","root");
+                    $conn = new PDO("mysql:host=localhost;dbnamne=utez;cahrset=utf8","root","");
 
                 } catch (PDOException $e) {
                     echo $e ->getMessage();
